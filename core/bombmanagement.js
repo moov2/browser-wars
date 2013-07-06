@@ -28,6 +28,8 @@ exports.bombsForUser = function (user, cb) {
 				console.log('Error saving user: ' + err);
 			}
 		});
-		cb();
+		if (cb!==undefined) {
+			cb();
+		}
 	}
 };
