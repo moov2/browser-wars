@@ -2,4 +2,9 @@ extends layout
 
 block content
     h1= title
-    p Welcome to #{title}
+    ul.bombs
+        if bombs
+            each bomb, i in bombs
+                li
+        else
+            li.no-bombs No bombs!

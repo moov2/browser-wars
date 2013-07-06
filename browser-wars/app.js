@@ -7,7 +7,6 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , login = require('./routes/login')
-  ,	battlefield = require('./routes/battlefield')
   , http = require('http')
   , path = require('path')
   , mongoose = require('mongoose')
@@ -42,8 +41,6 @@ app.get('/', authentication.restrict, routes.index);
 app.get('/users', user.list);
 app.get('/login', login.login);
 app.post('/login', login.loginpost);
-
-app.get('/battlefield', battlefield.battlefield);
 
 app.get('/logout', authentication.logout);
 
