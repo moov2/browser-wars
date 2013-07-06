@@ -1,8 +1,56 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/*
+ Dark: 			#3B3C40
+ Light Blue: 	#778BA6
+ Darker Blue: 	#69788C
+ Light grey: 	#F2EFE4
+ Darker grey: 	#D9D4C7
+*/
+html{
+	background-color: #3B3C40;
+	color: #D9D4C7;
+	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;	
+	margin: 0 auto;
+	padding: 24px;
+}
+
+body{
+	width:90%;
+}
+
+h1{
+	color:#F2EFE4;
+	text-align: center;
 }
 
 a {
-  color: #00B7FF;
+  color: #778BA6;
+}
+
+input{
+	font-size: 24px;
+	margin: 4px;
+}
+
+input[type="button"]{
+	text-align: right;
+}
+
+.form-centred{
+	margin: 0 auto;
+	max-width: 300px;
+	padding: 0;
+	text-align: center;	
+}
+.full-width{
+	width:100%;
+}
+
+.feedback{
+	background-color: #778BA6;
+	font-style: italic;
+	text-align: center;
+}
+
+.user-profile{
+	text-align: right;
 }
