@@ -18,11 +18,12 @@ exports.loginpost = function (req, res) {
         }
         if (user === null) {
             console.log('Creating user: ' +  username);
-            var newUser = createUser(username, function(err){
+            user = createUser(username, function(err){
                 return loginError (res, 'Error creating user: ' + err);
             });
         }
         console.log('Login: ' + username);
+        req.session.user = user;
         res.redirect('/');
     });
 };
