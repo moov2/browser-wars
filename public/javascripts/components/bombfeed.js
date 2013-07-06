@@ -31,6 +31,9 @@ function ($) {
 		$.get(bombsUrl, function (bombs){
 			self.redrawBombs(bombs);
 		});
+		$.get(newBombsUrl, function (bombs){
+			
+		});
 	};
 
 	p.redrawBombs = function (bombs) {
