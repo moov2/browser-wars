@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 
 exports.dbready = function () {
     var bombSchema = mongoose.Schema({
-        timeLeft: Number
+        timeLeft: Number,
+        detonation: Date
     });
 
     var Bomb = mongoose.model('Bomb', bombSchema);
