@@ -5,7 +5,6 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , login = require('./routes/login')
   , http = require('http')
   , path = require('path')
@@ -34,11 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
-  db.on('error', console.error.bind(console, 'connection error:'));
+  db.on('error', console.error.bind(console, 'db error:'));
 }
 
 app.get('/', authentication.restrict, routes.index);
-app.get('/users', user.list);
 app.get('/login', login.login);
 app.post('/login', login.loginpost);
 

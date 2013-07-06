@@ -2,8 +2,10 @@
 /*
  * GET home page.
  */
-var title = require('../references').title;
+var title = require('../references').title,
+BombDb = require('../models/bomb');
 
 exports.index = function(req, res){
-  res.render('index', { title: title, username: req.session.user.username });
+	var Bomb = BombDb.Bomb;
+	res.render('index', { title: title, username: req.session.user.username });
 };
