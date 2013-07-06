@@ -4,5 +4,9 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block header
-    block content
+    .header
+        include includes/header
+        block header
+
+    .content
+        block content
