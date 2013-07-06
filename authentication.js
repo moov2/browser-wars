@@ -7,7 +7,7 @@ exports.restrict = function (req, res, next) {
 		next();
 	} else {
 		req.session.error = 'Access denied';
-		res.redirect('/login');
+		res.redirect('/login?returnUrl='+req.url);
 	}
 };
 

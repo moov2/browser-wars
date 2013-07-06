@@ -45,6 +45,7 @@ app.get('/logout', authentication.logout);
 
 
 app.get('/api/bombs', authentication.restrict, apiBombs.list);
+app.get('/api/bombs/new', authentication.restrict, apiBombs.newBombs);
 
 db.once('open', models.dbready);
 

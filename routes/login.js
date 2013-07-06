@@ -27,7 +27,11 @@ exports.loginpost = function (req, res) {
         }
         console.log('Login: ' + username);
         req.session.user = user;
-        res.redirect('/');
+        if (req.query.returnUrl !== undefined) {
+            res.redirect(req.query.returnUrl);
+        } else {
+            res.redirect('/');
+        }
     });
 };
 
