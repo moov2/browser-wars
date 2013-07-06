@@ -16,6 +16,11 @@ exports.list = function (req, res) {
 		}
 		var user = users[0];
 
+		if(user===undefined) {
+			console.log('no user!');
+			res.error(500);
+		}
+
 		res.json(user.bombs);
 	});
 };
@@ -30,6 +35,11 @@ exports.newBombs = function (req, res) {
 			res.error(500);
 		}
 		var user = users[0];
+
+		if(user===undefined) {
+			console.log('no user!');
+			res.error(500);
+		}
 
 		bombManagement.bombsForUser(user, function (newBombs) {
 			res.json(newBombs);

@@ -18,6 +18,11 @@ exports.index = function(req, res){
 		}
 		var user = users[0];
 
+		if(user===undefined) {
+			console.log('no user!');
+			res.error(500);
+		}
+
 		bombManagement.bombsForUser(user, function () {
 			res.render('index', { title: title, username: user.username, bombs: user.bombs });
 		});	
