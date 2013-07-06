@@ -11,7 +11,7 @@ require.config({
     * Setting up root paths for module IDs.
     */
     paths: {
-        
+        jquery: 'vendor/jquery'
     }
 
 });
