@@ -5,8 +5,13 @@ var mongoose = require('mongoose');
 
 exports.dbready = function () {
 	var userSchema = mongoose.Schema({
-		username: String
+		username: String,
+		bombs: []
 	});
+
+	userSchema.statics.findByUsername = function (username, cb) {
+		this.find({ username: username }, cb);
+	};
 
 	var User = mongoose.model('User', userSchema);
 
