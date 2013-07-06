@@ -1,15 +1,14 @@
 /*
  * User model
  */
-var mongoose = require('mongoose'),
-User = undefined;
+var mongoose = require('mongoose');
 
 exports.dbready = function () {
 	var userSchema = mongoose.Schema({
 		username: String
 	});
 
-	User = mongoose.model('User', userSchema);
+	var User = mongoose.model('User', userSchema);
 
 	User.findOne({username: 'admin'}).exec(function (err, admin) {
 		if (err !== null) {
@@ -27,10 +26,10 @@ exports.dbready = function () {
 			console.log('Admin user is already created.');
 		}
 	});
+
+	exports.User = User;
 };
 
 var handleError = function (err) {
 	console.log(err);
 };
-
-exports.User = User;

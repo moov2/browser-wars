@@ -37,6 +37,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/login', login.login);
+app.post('/login', login.loginpost);
 
 db.once('open', models.dbready);
 

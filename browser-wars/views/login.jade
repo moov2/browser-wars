@@ -2,4 +2,11 @@ extends layout
 
 block content
 	h1 Login
-	p Login goes here
+	if error
+		p #{error}
+	p 
+		form(name="input", method="post")
+			key Username
+				input(type="text", name="username")
+
+			input(type="submit", value="Login")
