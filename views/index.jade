@@ -5,6 +5,6 @@ block content
     ul.bombs
         if bombs
             each bomb, i in bombs
-                li Bomb: #{Math.round(bomb.timeLeft/1000)} seconds until detonation
+                li.bomb Bomb: #{Math.round(bomb.timeLeft/1000)} seconds until detonation
         else
             li.no-bombs No bombs!
