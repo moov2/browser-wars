@@ -6,7 +6,11 @@ var UserDb = require('../models/user'),
 title = require('../references').loginTitle;
 
 exports.login = function (req, res) {
-    res.render('login', { title: title });
+    if (req.session.user !== undefined) {
+        res.redirect('/');
+    } else {
+        res.render('login', { title: title });
+    }
 };
 
 /**
