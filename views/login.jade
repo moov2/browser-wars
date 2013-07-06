@@ -1,12 +1,14 @@
 extends layout
 
 block content
-	h1 Login
-	if error
-		p #{error}
-	p 
-		form(name="input", method="post")
-			key Username
-				input(type="text", name="username")
+    h1 Welcome to Browser Wars
+    if error
+        p.feedback #{error}
+    p 
+        form.form-centred(name="input", method="post")
+            label(for="username") Enter your username to sign in:
+            br
+            input.full-width(name='username')
+            br
+            input(type="submit", value="Login")
 
-			input(type="submit", value="Login")
