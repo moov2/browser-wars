@@ -9,9 +9,14 @@ var express = require('express')
   , login = require('./routes/login')
   ,	battlefield = require('./routes/battlefield')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , mongoose = require('mongoose')
+  , models = require('./models/models');
 
 var app = express();
+
+mongoose.connect('localhost', 'browserwars');
+var db = mongoose.connection;
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -27,12 +32,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  db.on('error', console.error.bind(console, 'connection error:'));
 }
 
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/login', login.login);
+app.post('/login', login.loginpost);
 app.get('/battlefield', battlefield.battlefield);
+
+db.once('open', models.dbready);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
