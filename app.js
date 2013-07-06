@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , login = require('./routes/login')
+  , apiBombs = require('./routes/api/bombs')
   , http = require('http')
   , path = require('path')
   , mongoose = require('mongoose')
@@ -41,6 +42,9 @@ app.get('/login', login.login);
 app.post('/login', login.loginpost);
 
 app.get('/logout', authentication.logout);
+
+
+app.get('/api/bombs', authentication.restrict, apiBombs.list);
 
 db.once('open', models.dbready);
 

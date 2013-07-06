@@ -9,6 +9,9 @@ exports.login = function (req, res) {
     res.render('login', { title: title });
 };
 
+/**
+ * POST Login method
+ */
 exports.loginpost = function (req, res) {
     var User = userModel(),
     username = req.body.username;
