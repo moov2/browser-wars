@@ -15,6 +15,9 @@ exports.login = function (req, res) {
 exports.loginpost = function (req, res) {
     var User = userModel(),
     username = req.body.username;
+    if (username === undefined || username === null || username === '') {
+        return loginError(res, 'Username is required!');
+    }
     User.findOne({username: username}, function (err, user) {
         if (err !== null) {
             return loginError (res, 'Database Error: ' + err);
