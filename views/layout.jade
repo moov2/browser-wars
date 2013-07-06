@@ -3,6 +3,8 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(data-main='/javascripts/config', src='/javascripts/vendor/require.js')
+    block headscripts
   body
     .header
         include includes/header
@@ -10,3 +12,8 @@ html
 
     .content
         block content
+
+    .footer
+        block footer
+
+    block footscripts
