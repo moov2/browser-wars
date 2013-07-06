@@ -11,7 +11,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , mongoose = require('mongoose')
-  , models = require('./models/models');
+  , models = require('./models/models')
+  , authentication = require('./authentication');
 
 var app = express();
 
@@ -26,6 +27,8 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(express.cookieParser('best cookie hash ever!'));
+app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -35,11 +38,14 @@ if ('development' == app.get('env')) {
   db.on('error', console.error.bind(console, 'connection error:'));
 }
 
-app.get('/', routes.index);
+app.get('/', authentication.restrict, routes.index);
 app.get('/users', user.list);
 app.get('/login', login.login);
 app.post('/login', login.loginpost);
+
 app.get('/battlefield', battlefield.battlefield);
+
+app.get('/logout', authentication.logout);
 
 db.once('open', models.dbready);
 
