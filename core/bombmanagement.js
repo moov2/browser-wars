@@ -15,8 +15,7 @@ exports.bombsForUser = function (user, cb) {
 		bombsToCreate = references.bombsToCreate(bombDiff),
 		newBombs = [];
 		for (var i = bombsToCreate - 1; i >= 0; i--) {
-			console.log(references.generateBombTime());
-			var newBomb = new Bomb({ timeLeft: references.generateBombTime() });
+			var newBomb = new Bomb({ detonation: references.generateBombTime() });
 			newBomb.save(function(err) { 
 				if (err) {
 					console.log('Error saving bomb: ' + err);

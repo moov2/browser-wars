@@ -5,6 +5,9 @@ block content
     ul.bombs.js-bomb-feed
         if bombs
             each bomb, i in bombs
-                li.bomb Bomb: #{Math.round(bomb.timeLeft/1000)} seconds until detonation
+                if bomb.detonation < new Date()
+                    li.bomb.exploded Boom!
+                else
+                    li.bomb Bomb: #{Math.round((bomb.detonation - new Date())/1000)} seconds until detonation
         else
             li.no-bombs No bombs!
